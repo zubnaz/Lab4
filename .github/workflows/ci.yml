@@ -30,7 +30,7 @@ jobs:
 
     - name: Install ReportGenerator
       run: dotnet tool install --global dotnet-reportgenerator-globaltool
-      
+
     - name: Generate HTML coverage report
       run: |
         reportgenerator \
@@ -43,3 +43,12 @@ jobs:
       with:
         name: coverage-report
         path: coveragereport/
+    
+    - name: Install analyzers
+      run: dotnet tool install --global roslynator.dotnet.cli
+
+    - name: Lint with StyleCop
+      run: dotnet build Lab4.sln -warnaserror
+
+    - name: Analyze with Roslynator
+      run: roslynator analyze Lab4.sln --severity error
