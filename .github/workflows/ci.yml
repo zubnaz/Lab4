@@ -28,6 +28,9 @@ jobs:
     - name: Run tests with coverage
       run: dotnet test Lab4.sln --collect:"XPlat Code Coverage"
 
+    - name: Install ReportGenerator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+      
     - name: Generate HTML coverage report
       run: |
         reportgenerator \
