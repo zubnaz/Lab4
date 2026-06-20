@@ -23,7 +23,6 @@ namespace Tests
         [Test]
         public void HireStaffTest()
         {
-            if (library == null) return;
 
             library = Library.Singleton(new StaffManager(), new WhistleblowerEmail());
             librarian = new Librarian("Петро", "Коваль", "Олексійович", new Lab4.Classes.Date(13, 7, 2003));
