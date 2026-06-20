@@ -51,4 +51,5 @@ jobs:
       run: dotnet build Lab4.sln -warnaserror
 
     - name: Analyze with Roslynator
-      run: roslynator analyze Lab4.sln --severity error
+      run: roslynator analyze Lab4.sln
+
