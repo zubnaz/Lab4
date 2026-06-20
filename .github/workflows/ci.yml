@@ -25,5 +25,18 @@ jobs:
     - name: Build
       run: dotnet build Lab4.sln --configuration Release --no-restore
 
-    - name: Run tests
-      run: dotnet test Lab4.sln --verbosity normal
+    - name: Run tests with coverage
+      run: dotnet test Lab4.sln --collect:"XPlat Code Coverage"
+
+    - name: Generate HTML coverage report
+      run: |
+        reportgenerator \
+          -reports:Tests/TestResults/*/coverage.cobertura.xml \
+          -targetdir:coveragereport \
+          -reporttypes:Html
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: coveragereport/
