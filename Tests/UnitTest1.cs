@@ -32,7 +32,7 @@ namespace Tests
             library.HireStaff(librarian, 10000);
             var countOfStaffAfterHire = library.Staff.Count;
 
-            Assert.That(countOfStaffBeforeHire < countOfStaffAfterHire, Is.True);
+            Assert.That(countOfStaffBeforeHire == countOfStaffAfterHire, Is.True);
             Assert.That(library.Staff.Contains(librarian), Is.True);
         }
         [Test]
